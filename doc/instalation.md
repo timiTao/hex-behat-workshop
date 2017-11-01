@@ -18,6 +18,7 @@
         git fetch origin ex_basics_3_result_cont
 
 OR
+        
         git fetch origin ex_basics_1 && git fetch origin ex_basics_1_result && git fetch origin ex_basics_2 && git fetch origin ex_basics_2_result && git fetch origin ex_basics_3 && git fetch origin ex_basics_3_result && git fetch origin ex_basics_3_result_adv && git fetch origin ex_basics_3_result_cont
 
 3. [Install composer following link](https://getcomposer.org/download/) and next library:
@@ -42,6 +43,7 @@ OR
         git fetch origin ex_basics_3_result_cont
 
 OR
+        
         git fetch origin ex_basics_1 && git fetch origin ex_basics_1_result && git fetch origin ex_basics_2 && git fetch origin ex_basics_2_result && git fetch origin ex_basics_3 && git fetch origin ex_basics_3_result && git fetch origin ex_basics_3_result_adv && git fetch origin ex_basics_3_result_cont
 
 3. Install library by docker-composer
