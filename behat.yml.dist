@@ -6,6 +6,14 @@ default:
             path: %paths.base%/features
             contexts:
                 - "PlayerFeatureContext": ~
+system:
+    autoload:
+        '': %paths.base%/features/bootstrap/
+    suites:
+        default:
+            path: %paths.base%/features
+            contexts:
+                - System\PlayerFeatureContext: ~
 basics:
     autoload:
         '': %paths.base%/features/bootstrap/
