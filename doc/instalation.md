@@ -4,7 +4,7 @@
 
 1. Clone repository
 
-        git clone git@github.com:timiTao/hex-behat-workshop.git
+        git clone https://github.com/timiTao/hex-behat-workshop.git
         
 2. Fetch all branches
 
