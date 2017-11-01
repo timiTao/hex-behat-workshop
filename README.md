@@ -1,6 +1,6 @@
 # Workshops
 
-Go with this documentation [Installation process](https://github.com/timiTao/behat-symfony-container/blob/master/features/import.feature)
+Go with this documentation [Installation process](https://github.com/timiTao/hex-behat-workshop/blob/master/doc/instalation.md)
 
 Please, add this repository to watched, in case of some updates.
 
