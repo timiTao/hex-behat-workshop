@@ -1,0 +1,16 @@
+{
+  "name": "timitao/hex-behat-workshop",
+  "description": "Materials for workshops about Behat and Hexagonal architecture",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "require": {
+    "behat/behat": "^3.3.0",
+    "timitao/behat-symfony-container": "^1.0",
+    "phpunit/phpunit": "^5.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "Workshops\\": "src/"
+    }
+  }
+}
