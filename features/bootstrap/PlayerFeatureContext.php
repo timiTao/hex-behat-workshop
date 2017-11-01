@@ -10,6 +10,8 @@ use Workshops\Domain\Player;
 use Workshops\Domain\UseCase\GetPlayer\GetPlayerQuery;
 use Workshops\Domain\UseCase\GetPlayer\GetPlayerUseCase;
 use Workshops\Domain\UseCase\GetPlayer\Response\Player as GetPlayerResponse;
+use Workshops\Domain\UseCase\ThrowBall\ThrowBallCommand;
+use Workshops\Domain\UseCase\ThrowBall\ThrowBallUseCase;
 
 class PlayerFeatureContext implements Context
 {
@@ -21,7 +23,7 @@ class PlayerFeatureContext implements Context
     /**
      * @var GetPlayerUseCase
      */
-    private $useCase;
+    private $getPlayerUseCase;
 
     /**
      * @var GetPlayerResponse
@@ -29,11 +31,17 @@ class PlayerFeatureContext implements Context
     private $getPlayerResponse;
 
     /**
+     * @var ThrowBallUseCase
+     */
+    private $throwBallUserCase;
+
+    /**
      */
     public function __construct()
     {
         $this->playerRepository = new PlayerRepository();
-        $this->useCase = new GetPlayerUseCase($this->playerRepository);
+        $this->getPlayerUseCase = new GetPlayerUseCase($this->playerRepository);
+        $this->throwBallUserCase = new ThrowBallUseCase($this->playerRepository);
     }
 
     /**
@@ -50,7 +58,7 @@ class PlayerFeatureContext implements Context
     public function playerExist(string $expectedName)
     {
         $query = new GetPlayerQuery($expectedName);
-        $this->getPlayerResponse = $this->useCase->handle($query);
+        $this->getPlayerResponse = $this->getPlayerUseCase->handle($query);
     }
 
     /**
@@ -58,8 +66,8 @@ class PlayerFeatureContext implements Context
      */
     public function playerThrowBall(string $name)
     {
-        $player = $this->playerRepository->getPlayerByName($name);
-        $player->throwBall();
+        $command = new ThrowBallCommand($name);
+        $this->throwBallUserCase->handle($command);
     }
 
     /**

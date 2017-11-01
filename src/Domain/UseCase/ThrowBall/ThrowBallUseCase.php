@@ -3,12 +3,11 @@
  * @author Tomasz Kunicki <kunicki.tomasz@gmail.com>
  */
 
-namespace Workshops\Domain\UseCase\GetPlayer;
+namespace Workshops\Domain\UseCase\ThrowBall;
 
 use Workshops\Domain\Repository\PlayerRepositoryInterface;
-use Workshops\Domain\UseCase\GetPlayer\Response\Player;
 
-class GetPlayerUseCase
+class ThrowBallUseCase
 {
     /**
      * @var PlayerRepositoryInterface
@@ -20,10 +19,9 @@ class GetPlayerUseCase
         $this->playerRepository = $playerRepository;
     }
 
-    public function handle(GetPlayerQuery $query): Player
+    public function handle(ThrowBallCommand $command)
     {
-        $player = $this->playerRepository->getPlayerByName($query->getName());
-
-        return new Player($player);
+        $player = $this->playerRepository->getPlayerByName($command->getPlayerName());
+        $player->throwBall();
     }
 }

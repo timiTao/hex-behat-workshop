@@ -5,6 +5,8 @@
 
 namespace Workshops\Domain\UseCase\GetPlayer\Response;
 
+use Workshops\Domain\Player as DomainPlayer;
+
 class Player
 {
     /**
@@ -12,8 +14,14 @@ class Player
      */
     public $name;
 
-    public function __construct(string $name)
+    /**
+     * @var int
+     */
+    public $points;
+
+    public function __construct(DomainPlayer $player)
     {
-        $this->name = $name;
+        $this->name = $player->getName();
+        $this->points = $player->getPoints();
     }
 }
