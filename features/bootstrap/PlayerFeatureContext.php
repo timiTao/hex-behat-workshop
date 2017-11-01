@@ -29,4 +29,20 @@ class PlayerFeatureContext implements Context
     {
         Assert::assertEquals($expectedName, $this->player->getName());
     }
+
+    /**
+     * @When player throw ball
+     */
+    public function playerThrowBall()
+    {
+        $this->player->throwBall();
+    }
+
+    /**
+     * @Then player should have :points point
+     */
+    public function playerShouldHavePoint(int $expectedPoints)
+    {
+        Assert::assertEquals($expectedPoints, $this->player->getPoints());
+    }
 }
