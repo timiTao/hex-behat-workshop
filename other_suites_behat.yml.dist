@@ -1,0 +1,18 @@
+default:
+    autoload:
+        '': %paths.base%/features/bootstrap/
+    suites:
+        default:
+            path: %paths.base%/features
+            contexts:
+                - "PlayerFeatureContext": ~
+        player_by_path:
+            path: %paths.base%/features/Player
+            contexts:
+                - "PlayerFeatureContext": ~
+        player_by_tag:
+            path: %paths.base%/features/Player
+            contexts:
+                - "PlayerFeatureContext": ~
+            filters:
+                tags: '@player_domain'

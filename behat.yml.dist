@@ -1,0 +1,18 @@
+default:
+    autoload:
+        '': %paths.base%/features/bootstrap/
+    suites:
+        default:
+            path: %paths.base%/features
+            contexts:
+                - "PlayerFeatureContext": ~
+basics:
+    autoload:
+        '': %paths.base%/features/bootstrap/
+    suites:
+        default:
+            path: %paths.base%/features
+            contexts:
+                - "PlayerFeatureContext": ~
+            filters:
+                tags: '@basics'
