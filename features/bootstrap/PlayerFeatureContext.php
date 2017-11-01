@@ -4,22 +4,44 @@
  */
 
 use Behat\Behat\Context\Context;
-use Workshops\Domain\Player;
+use Helpers\Domain\Repository\PlayerRepository;
 use PHPUnit\Framework\Assert;
+use Workshops\Domain\Player;
+use Workshops\Domain\UseCase\GetPlayer\GetPlayerQuery;
+use Workshops\Domain\UseCase\GetPlayer\GetPlayerUseCase;
+use Workshops\Domain\UseCase\GetPlayer\Response\Player as GetPlayerResponse;
 
 class PlayerFeatureContext implements Context
 {
     /**
-     * @var Player
+     * @var PlayerRepository
      */
-    private $player;
+    private $playerRepository;
+
+    /**
+     * @var GetPlayerUseCase
+     */
+    private $useCase;
+
+    /**
+     * @var GetPlayerResponse
+     */
+    private $getPlayerResponse;
+
+    /**
+     */
+    public function __construct()
+    {
+        $this->playerRepository = new PlayerRepository();
+        $this->useCase = new GetPlayerUseCase($this->playerRepository);
+    }
 
     /**
      * @Given player :name
      */
     public function player(string $name)
     {
-        $this->player = new Player($name);
+        $this->playerRepository->add(new Player($name));
     }
 
     /**
@@ -27,22 +49,25 @@ class PlayerFeatureContext implements Context
      */
     public function playerExist(string $expectedName)
     {
-        Assert::assertEquals($expectedName, $this->player->getName());
+        $query = new GetPlayerQuery($expectedName);
+        $this->getPlayerResponse = $this->useCase->handle($query);
     }
 
     /**
-     * @When player throw ball
+     * @When player :name throw ball
      */
-    public function playerThrowBall()
+    public function playerThrowBall(string $name)
     {
-        $this->player->throwBall();
+        $player = $this->playerRepository->getPlayerByName($name);
+        $player->throwBall();
     }
 
     /**
-     * @Then player should have :points point
+     * @Then player :name should have :points point
      */
-    public function playerShouldHavePoint(int $expectedPoints)
+    public function playerShouldHavePoint(string $name, int $expectedPoints)
     {
-        Assert::assertEquals($expectedPoints, $this->player->getPoints());
+        $player = $this->playerRepository->getPlayerByName($name);
+        Assert::assertEquals($expectedPoints, $player->getPoints());
     }
 }

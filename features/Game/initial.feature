@@ -5,9 +5,9 @@ Feature: Basic game
 
   Scenario: Define basic of game
     Given player "Ed"
-    Then player should have "0" point
+    Then player "Ed" should have "0" point
 
   Scenario: Player throw ball after initialization
     Given player "Ed"
-    When player throw ball
-    Then player should have "1" point
+    When player "Ed" throw ball
+    Then player "Ed" should have "1" point
