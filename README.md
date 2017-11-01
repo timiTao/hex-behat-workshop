@@ -1,12 +1,9 @@
-# Workshops at PHPCe 2017
+# Workshops
 
-Coming mtaterials for workshops at PHPCe 2017.
+Go with this documentation [Installation process](https://github.com/timiTao/behat-symfony-container/blob/master/features/import.feature)
 
-This will be updated.
+Please, add this repository to watched, in case of some updates.
 
-Due to need to change materials, this will be available at evening of 01.11.2017.
+## Contributors
 
-There will be available documentation of the installation. 
-Please, follow that before going to workshops.
-
-Stay tuned ;)
+* Tomasz Kunicki [TimiTao](http://github.com/timiTao) [lead developer]
