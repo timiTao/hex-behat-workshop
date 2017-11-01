@@ -13,7 +13,11 @@ system:
         default:
             path: %paths.base%/features
             contexts:
-                - System\PlayerFeatureContext: ~
+                - System\PlayerFeatureContext:
+                  - "@player_repository"
+                  - "@use_case.get_player"
+                  - "@use_case.throw_ball"
+            services: "\\Helpers\\Container::factory"
 basics:
     autoload:
         '': %paths.base%/features/bootstrap/

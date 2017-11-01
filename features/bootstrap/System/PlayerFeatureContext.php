@@ -37,13 +37,15 @@ class PlayerFeatureContext implements Context
      */
     private $throwBallUserCase;
 
-    /**
-     */
-    public function __construct()
+    public function __construct(
+        PlayerRepository $playerRepository,
+        GetPlayerUseCase $getPlayerUseCase,
+        ThrowBallUseCase $throwBallUserCase
+    )
     {
-        $this->playerRepository = new PlayerRepository();
-        $this->getPlayerUseCase = new GetPlayerUseCase($this->playerRepository);
-        $this->throwBallUserCase = new ThrowBallUseCase($this->playerRepository);
+        $this->playerRepository = $playerRepository;
+        $this->getPlayerUseCase = $getPlayerUseCase;
+        $this->throwBallUserCase = $throwBallUserCase;
     }
 
     /**
